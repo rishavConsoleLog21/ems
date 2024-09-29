@@ -1,0 +1,25 @@
+{
+  "name": "ems",
+  "version": "1.0.0",
+  "description": "Employee Management System",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --env-file=.env --env-file=.development.env server/index.js",
+    "start": "node server/index.js"
+  },
+  "keywords": [
+    "javascript",
+    "react",
+    "node.js",
+    "mongodb",
+    "express"
+  ],
+  "author": "rishavConsoleLog21",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "nodemon": "^3.1.7"
+  }
+}
