@@ -25,7 +25,6 @@ app.get("/", (req, res) => {
 //Routes
 import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
-import e from "express";
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/auth", authRoutes);
