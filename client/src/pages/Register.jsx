@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ const Register = () => {
         setError(true);
         return;
       }
+      navigate("/login");
     } catch (error) {
       setLoading(false);
       setError(true);
