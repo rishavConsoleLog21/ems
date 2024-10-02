@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Dashboard, Employee, Login, Register } from "./pages";
+import { Dashboard, Employee, Login, Register, Profile } from "./pages";
 import Header from "./components/Header";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/employee" element={<Employee />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/employee" element={<Employee />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
