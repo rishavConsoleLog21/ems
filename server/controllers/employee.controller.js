@@ -57,4 +57,19 @@ const newEmployee = async (req, res, next) => {
   }
 };
 
-export { newEmployee };
+//NOTE: Routes to Get all Employees
+const allEmployees = async (req, res, next) => {
+  try {
+    const employees = await Employee.find({});
+    return res.status(200).json({
+      success: true,
+      count: employees.length,
+      employees,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { newEmployee, allEmployees };
