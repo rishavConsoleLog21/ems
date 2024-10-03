@@ -7,6 +7,7 @@ const __dirname = path.resolve();
 const app = express();
 
 app.use(express.static(path.join(__dirname, "/client/dist")));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
@@ -35,9 +36,11 @@ app.get("/", (req, res) => {
 //Routes
 import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import employeesRoutes from "./routes/employees.routes.js";
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/employees", employeesRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
