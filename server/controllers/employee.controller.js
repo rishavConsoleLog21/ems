@@ -91,7 +91,44 @@ const detailedEmployees = async (req, res, next) => {
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ success: false, message: error.message });
+    next(error);
   }
 };
 
-export { newEmployee, allEmployees, detailedEmployees };
+//NOTE: Routes to Update an Employee
+const updateEmployee = async (req, res, next) => {
+  const { name, email, phone, designation, gender, course } = req.body;
+  try {
+    if (!(name && email && phone && designation && gender && course)) {
+      return next(errorHandler(400, "All fields are required to update"));
+    }
+    const { id } = req.params;
+    const employee = await Employee.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          name,
+          email,
+          phone,
+          designation,
+          gender,
+          course,
+        },
+      },
+      { new: true }
+    );
+    if (!employee) {
+      return next(errorHandler(404, "Employee not found"));
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Employee updated successfully",
+      employee,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { newEmployee, allEmployees, detailedEmployees, updateEmployee };
