@@ -61,6 +61,11 @@ const newEmployee = async (req, res, next) => {
 const allEmployees = async (req, res, next) => {
   try {
     const employees = await Employee.find({});
+
+    if (!employees) {
+      return next(errorHandler(404, "No employees found"));
+    }
+
     return res.status(200).json({
       success: true,
       count: employees.length,
@@ -72,4 +77,21 @@ const allEmployees = async (req, res, next) => {
   }
 };
 
-export { newEmployee, allEmployees };
+//NOTE: Routes to get a single Employee
+const detailedEmployees = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const employee = await Employee.findById(id);
+
+    if (!employee) {
+      return next(errorHandler(404, "Employee not found"));
+    }
+
+    return res.status(200).json(employee);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { newEmployee, allEmployees, detailedEmployees };
