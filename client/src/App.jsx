@@ -27,7 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
-              <Route path="/employees" element={<Employees />} />
+              <Route path="/employee" element={<Employees />} />
               <Route path="/employee/create" element={<CreateEmployee />} />
               <Route
                 path="/employee/details/:id"
