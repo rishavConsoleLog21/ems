@@ -131,4 +131,27 @@ const updateEmployee = async (req, res, next) => {
   }
 };
 
-export { newEmployee, allEmployees, detailedEmployees, updateEmployee };
+//NOTE: Routes to Delete an Employee
+const deleteEmployee = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const employee = await Employee.findByIdAndDelete(id);
+    if (!employee) {
+      return next(errorHandler(404, "Employee not found"));
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Employee deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export {
+  newEmployee,
+  allEmployees,
+  detailedEmployees,
+  updateEmployee,
+  deleteEmployee,
+};
