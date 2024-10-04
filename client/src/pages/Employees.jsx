@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -135,7 +134,7 @@ const Employees = () => {
               >
                 Created At
               </th>
-              <th className="border border-slate-600 rounded-md max-md:hidden">
+              <th className="border border-slate-600 rounded-md">
                 Action
               </th>
             </tr>
@@ -171,9 +170,13 @@ const Employees = () => {
                   {employee.course}
                 </td>
                 <td className="border border-slate-700 rounded-md max-md:hidden py-2">
-                  {new Date(employee.createdAt).toLocaleDateString()}
+                  {new Date(employee.createdAt).toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </td>
-                <td className="border border-slate-700 rounded-md max-md:hidden py-2">
+                <td className="border border-slate-700 rounded-md py-2">
                   <div className="flex justify-center gap-x-4">
                     <Link to={`/employee/details/${employee._id}`}>
                       <BsInfoCircle className="text-2xl text-blue-600 mx-2" />
