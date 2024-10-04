@@ -8,6 +8,7 @@ const employeeSchema = new Schema(
     },
     email: {
       type: String,
+      lowercase: true,
       required: [true, "Email is required"],
       unique: [true, "Email already exists"],
     },
@@ -31,7 +32,7 @@ const employeeSchema = new Schema(
     employeeImage: {
       type: String,
       default:
-        "https://firebasestorage.googleapis.com/v0/b/ems-auth-31a53.appspot.com/o/placeholder.png?alt=media&token=289ab040-af2d-4647-8bf9-89c0893347a9",
+        "https://firebasestorage.googleapis.com/v0/b/ems-auth-31a53.appspot.com/o/Database_Image%2Fplaceholder.png?alt=media&token=49fc8b31-b961-4465-9609-8eb12951d129",
     },
   },
   {
