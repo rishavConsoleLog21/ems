@@ -1,7 +1,23 @@
+import CreateEmployee from "./CreateEmployee";
 import Dashboard from "./Dashboard";
-import Employee from "./Employee";
+import DeleteEmployee from "./DeleteEmployee";
+import DetailedEmployee from "./DetailedEmployee";
+import Employees from "./Employees";
 import Login from "./Login";
-import Register from "./Register";
+import NotFound from "./NotFound";
 import Profile from "./Profile";
+import Register from "./Register";
+import UpdateEmployee from "./UpdateEmployee";
 
-export { Dashboard, Employee, Login, Register, Profile };
+export {
+  Dashboard,
+  Employees,
+  Login,
+  Register,
+  Profile,
+  CreateEmployee,
+  UpdateEmployee,
+  DeleteEmployee,
+  DetailedEmployee,
+  NotFound,
+};
