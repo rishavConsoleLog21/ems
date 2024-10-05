@@ -17,6 +17,7 @@ import {
   deleteUserSuccess,
   logoutUser,
 } from "../redux/user/userSlice";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -83,9 +84,13 @@ const Profile = () => {
         dispatch(updateUserFailure(data));
         return;
       }
+      toast.success("Profile updated successfully");
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
+      toast.error(
+        "An error occurred while updating your profile. Please try again."
+      );
       dispatch(updateUserFailure(error));
     }
   };
@@ -101,8 +106,12 @@ const Profile = () => {
         dispatch(deleteUserFailure(data));
         return;
       }
+      toast.success("Account deleted successfully");
       dispatch(deleteUserSuccess(data));
     } catch (error) {
+      toast.error(
+        "An error occurred while deleting your account. Please try again."
+      );
       dispatch(deleteUserFailure(error));
     }
   };
@@ -110,9 +119,10 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await fetch("/api/v1/auth/logout");
+      toast.success("Logged out successfully");
       dispatch(logoutUser());
     } catch (error) {
-      console.log(error);
+      toast.error("An error occurred while logging out. Please try again.");
     }
   };
 

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   getStorage,
   getDownloadURL,
@@ -56,7 +55,6 @@ const UpdateEmployee = () => {
         setFormData({ image: data.image });
         setLoading(false);
       } catch (error) {
-        console.error(error);
         toast.error("Failed to fetch employee");
         setLoading(false);
       }
@@ -143,7 +141,7 @@ const UpdateEmployee = () => {
     }
 
     if (phone.length !== 10) {
-      alert("Phone number should be 10 digits");
+      toast.error("Phone number should be 10 digits");
       setLoading(false);
       return;
     }
@@ -165,7 +163,6 @@ const UpdateEmployee = () => {
         toast.error("Failed to Updated employee");
       }
     } catch (error) {
-      console.error(error);
       toast.error("Failed to Updated employee");
       setLoading(false);
     }

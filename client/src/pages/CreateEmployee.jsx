@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   getStorage,
   getDownloadURL,
@@ -135,7 +134,6 @@ const CreateEmployee = () => {
         toast.error("Failed to create employee");
       }
     } catch (error) {
-      console.error(error);
       setLoading(false);
     }
   };

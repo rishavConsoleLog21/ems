@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
@@ -28,7 +29,7 @@ const Employees = () => {
         setEmployees(data.employees);
         setLoading(false);
       } catch (error) {
-        console.error(error);
+        toast.error("Something went wrong");
         setLoading(false);
       }
     };

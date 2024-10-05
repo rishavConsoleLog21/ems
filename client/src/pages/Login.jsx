@@ -7,6 +7,7 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../components/OAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,9 +36,11 @@ const Login = () => {
         dispatch(signInFailure(data));
         return;
       }
+      toast.success("Login successful");
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
+      toast.error("An error occurred while login. Please try again.");
       dispatch(signInFailure(error));
     }
   };

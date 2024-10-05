@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { toast } from "react-toastify";
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
@@ -28,8 +30,10 @@ const Register = () => {
         setError(true);
         return;
       }
+      toast.success("Registration successful");
       navigate("/login");
     } catch (error) {
+      toast.error("An error occurred while registering. Please try again.");
       setLoading(false);
       setError(true);
     }
