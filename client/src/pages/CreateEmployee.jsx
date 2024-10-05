@@ -53,6 +53,7 @@ const CreateEmployee = () => {
     const ImageName = new Date().getTime() + image.name;
     const storageRef = ref(storage, ImageName);
     const uploadImage = uploadBytesResumable(storageRef, image);
+    setLoading(true);
     uploadImage.on(
       "state_changed",
       (snapshot) => {
@@ -62,19 +63,30 @@ const CreateEmployee = () => {
       },
       (error) => {
         setImageError(true);
+        setLoading(false);
       },
-      () => {
-        getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) =>
+      async () => {
+        try {
+          const downloadURL = await getDownloadURL(uploadImage.snapshot.ref);
           setFormData({
             ...formData,
-            employeeImage: downloadURL,
-          })
-        );
+            image: downloadURL,
+          });
+          setLoading(false);
+        } catch (error) {
+          setImageError(true);
+          setLoading(false);
+        }
       }
     );
   };
 
   const handleSaveEmployee = async () => {
+    if (!formData.image) {
+      toast.error("Please wait until the image is uploaded");
+      return;
+    }
+
     const data = {
       name,
       email,
@@ -82,7 +94,7 @@ const CreateEmployee = () => {
       designation,
       gender,
       course: course.join(", "),
-      image,
+      image: formData.image,
     };
     setLoading(true);
 
@@ -93,9 +105,9 @@ const CreateEmployee = () => {
       designation === "" ||
       gender === "" ||
       course.length === 0 ||
-      image === ""
+      !formData.image
     ) {
-      alert("All fields are required");
+      toast.error("Please fill all the fields and upload an image");
       setLoading(false);
       return;
     }
@@ -107,7 +119,6 @@ const CreateEmployee = () => {
     }
 
     try {
-      setLoading(true);
       const res = await fetch("/api/v1/employees/new", {
         method: "POST",
         headers: {
@@ -262,7 +273,7 @@ const CreateEmployee = () => {
             onChange={(e) => setImage(e.target.files[0])}
           />
           <img
-            src={formData.employeeImage}
+            src={formData.image}
             alt="Preview"
             className="mt-2 w-24 h-24 cursor-pointer rounded-full self-center object-cover"
             onClick={() => fileInputRef.current.click()}
@@ -286,6 +297,7 @@ const CreateEmployee = () => {
         <button
           className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85"
           onClick={handleSaveEmployee}
+          disabled={loading}
         >
           Save Employee
         </button>

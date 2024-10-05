@@ -29,10 +29,8 @@ const employeeSchema = new Schema(
       type: String,
       required: [true, "Course is required"],
     },
-    employeeImage: {
+    image: {
       type: String,
-      default:
-        "https://firebasestorage.googleapis.com/v0/b/ems-auth-31a53.appspot.com/o/Database_Image%2Fplaceholder.png?alt=media&token=49fc8b31-b961-4465-9609-8eb12951d129",
     },
   },
   {

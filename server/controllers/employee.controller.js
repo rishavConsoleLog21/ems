@@ -3,7 +3,7 @@ import { errorHandler } from "../utils/error.js";
 
 //NOTE: Routes to Create a new Employee
 const newEmployee = async (req, res, next) => {
-  const { name, email, phone, designation, gender, course } = req.body;
+  const { name, email, phone, designation, gender, course, image } = req.body;
 
   try {
     if (
@@ -39,6 +39,7 @@ const newEmployee = async (req, res, next) => {
       designation,
       gender,
       course,
+      image,
     });
 
     const createdEmployee = await Employee.findById(employee._id);

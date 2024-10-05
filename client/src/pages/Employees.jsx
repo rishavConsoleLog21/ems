@@ -147,7 +147,7 @@ const Employees = () => {
                 </td>
                 <td className="border border-slate-700 rounded-md py-0">
                   <img
-                    src={employee.employeeImage}
+                    src={employee.image}
                     className="h-10 w-10 rounded-full object-cover mx-auto"
                   />
                 </td>
