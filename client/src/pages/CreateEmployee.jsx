@@ -149,6 +149,7 @@ const CreateEmployee = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Name</label>
           <input
+            id="name"
             type="text"
             className="border-2 border-slate-500 px-4 rounded-lg py-2 w-full"
             value={name}
@@ -159,6 +160,7 @@ const CreateEmployee = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Email📧</label>
           <input
+            id="email"
             type="email"
             className="border-2 border-slate-500 px-4 rounded-lg py-2 w-full lowercase"
             value={email}
@@ -169,6 +171,7 @@ const CreateEmployee = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Phone📞</label>
           <input
+            id="phone"
             type="text"
             className="border-2 border-slate-500 px-4 rounded-lg py-2 w-full"
             value={phone}
@@ -179,6 +182,7 @@ const CreateEmployee = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Designation</label>
           <select
+            id="designation"
             value={designation}
             onChange={(e) => setDesignation(e.target.value)}
             className="border-2 border-slate-500 px-4 rounded-lg py-2 w-full"
@@ -191,7 +195,7 @@ const CreateEmployee = () => {
           </select>
         </div>
         <div className="my-4">
-          <label className="text-xl mr-4 text-slate-600">Gender🚹/🚺</label>
+          <label className="text-xl mr-4 text-slate-600 ">Gender🚹/🚺</label>
           <div>
             <label className="mr-2 text-blue-500">
               <input
@@ -215,7 +219,7 @@ const CreateEmployee = () => {
         </div>
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Course</label>
-          <div>
+          <div id="course">
             <label className="mr-2">
               <input
                 type="checkbox"
@@ -266,6 +270,7 @@ const CreateEmployee = () => {
         <div className="my-4">
           <label className="text-xl mr-4 text-slate-600">Image</label>
           <input
+            id="image"
             type="file"
             ref={fileInputRef}
             hidden
@@ -295,6 +300,7 @@ const CreateEmployee = () => {
           </p>
         </div>
         <button
+          id="save"
           className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85"
           onClick={handleSaveEmployee}
           disabled={loading}

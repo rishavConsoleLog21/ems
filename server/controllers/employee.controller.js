@@ -98,10 +98,13 @@ const detailedEmployees = async (req, res, next) => {
 
 //NOTE: Routes to Update an Employee
 const updateEmployee = async (req, res, next) => {
-  const { name, email, phone, designation, gender, course } = req.body;
+  const { name, email, phone, designation, gender, course, image } = req.body;
   try {
     if (!(name && email && phone && designation && gender && course)) {
       return next(errorHandler(400, "All fields are required to update"));
+    }
+    if (phone.length !== 10) {
+      return next(errorHandler(400, "Phone number must be 10 digits"));
     }
     const { id } = req.params;
     const employee = await Employee.findByIdAndUpdate(
@@ -114,6 +117,7 @@ const updateEmployee = async (req, res, next) => {
           designation,
           gender,
           course,
+          image,
         },
       },
       { new: true }
