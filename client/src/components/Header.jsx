@@ -15,18 +15,33 @@ const Header = () => {
     }
   };
   return (
-    <div className="bg-sky-600">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+    <div className="bg-sky-500">
+      <div className="flex justify-between items-center max-w-6xl mx-auto p-3 ">
         <Link to="/">
-          <h1 className="font-bold">Dashboard</h1>
+          <h1
+            className="font-bold text-2xl text-slate-700 cursor-pointer hover:text-slate-500 transition-colors duration-300 ease-in-out hover:scale-110 transform
+          "
+          >
+            Dashboard
+          </h1>
         </Link>
         <ul className="flex gap-4">
-          <Link to="/employee">{currentUser ? <li>Employee</li> : null}</Link>
+          <Link to="/employee">
+            {currentUser ? (
+              <li
+                className="
+          text-slate-700 hover:text-slate-500 transition-colors duration-300 ease-in-out hover:scale-110 transform cursor-pointer
+          "
+              >
+                Employee
+              </li>
+            ) : null}
+          </Link>
           <Link to="/register">
             {currentUser ? (
               <li
                 onClick={handleLogout}
-                className="text-red-500"
+                className="text-red-500 cursor-pointer hover:text-red-600 transition-colors duration-300 ease-in-out hover:scale-110 transform"
               >
                 Logout
               </li>
@@ -39,7 +54,7 @@ const Header = () => {
               <img
                 src={currentUser.profileImage}
                 alt="profile image"
-                className="h-7 w-7 rounded-full object-cover"
+                className="h-7 w-7 rounded-full object-cover hover:scale-110 transition-transform cursor-pointer mx-2 border-2 border-slate-700 hover:border-slate-500"
               />
             ) : (
               <li>Login</li>
