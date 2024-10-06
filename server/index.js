@@ -6,6 +6,7 @@ import helmet from "helmet";
 
 const __dirname = path.resolve();
 const app = express();
+const port = process.env.PORT;
 app.use(helmet());
 
 app.use(express.json());
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, "/client/dist")));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html" ));
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 mongoose
@@ -27,8 +28,8 @@ mongoose
     console.log("Error connecting to MongoDB: ", error.message);
   });
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
 //Routes

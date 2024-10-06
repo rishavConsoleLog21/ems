@@ -235,10 +235,10 @@ const UpdateEmployee = () => {
             <option value="Sales">Sales</option>
           </select>
         </div>
-        <div className="my-4 flex items-center gap-4">
-          <label className="text-xl text-slate-600">Gender🚹/🚺</label>
-          <div id="gender" className="flex gap-4">
-            <label className="text-blue-500 flex items-center gap-1">
+        <div className="my-4">
+          <label className="text-xl mr-4 text-slate-600">Gender🚹/🚺</label>
+          <div id="gender">
+            <label className="mr-2 text-blue-500">
               <input
                 type="radio"
                 value="M"
@@ -247,7 +247,7 @@ const UpdateEmployee = () => {
               />
               M
             </label>
-            <label className="text-pink-500 flex items-center gap-1">
+            <label className="mr-2 text-pink-500">
               <input
                 type="radio"
                 value="F"
@@ -258,10 +258,10 @@ const UpdateEmployee = () => {
             </label>
           </div>
         </div>
-        <div className="my-4 flex items-center gap-4">
-          <label className="text-xl text-slate-600">Course</label>
-          <div id="course" className="flex gap-4">
-            <label className="flex items-center gap-1">
+        <div className="my-4">
+          <label className="text-xl mr-4 text-slate-600">Course</label>
+          <div id="course">
+            <label className="mr-2">
               <input
                 type="checkbox"
                 value="MCA"
@@ -276,7 +276,7 @@ const UpdateEmployee = () => {
               />
               MCA
             </label>
-            <label className="flex items-center gap-1">
+            <label className="mr-2">
               <input
                 type="checkbox"
                 value="BCA"
@@ -291,7 +291,7 @@ const UpdateEmployee = () => {
               />
               BCA
             </label>
-            <label className="flex items-center gap-1">
+            <label className="mr-2">
               <input
                 type="checkbox"
                 value="BSC"
@@ -308,8 +308,8 @@ const UpdateEmployee = () => {
             </label>
           </div>
         </div>
-        <div className="my-4 flex flex-col items-center">
-          <label className="text-xl text-slate-600">Image</label>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-slate-600">Image</label>
           <input
             id="image"
             type="file"
@@ -322,10 +322,10 @@ const UpdateEmployee = () => {
             id="preview"
             src={formData.image}
             alt="Preview"
-            className="mt-2 w-24 h-24 cursor-pointer rounded-full object-cover"
+            className="mt-2 w-24 h-24 cursor-pointer rounded-full self-center object-cover"
             onClick={() => fileInputRef.current.click()}
           />
-          <p className="text-sm mt-2">
+          <p className="text-sm self-center">
             {imageError ? (
               <span className="text-red-500">
                 Error uploading image (file size must be less than 2 MB)
@@ -342,7 +342,7 @@ const UpdateEmployee = () => {
           </p>
         </div>
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85 mt-4"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85"
           onClick={handleUpdateEmployee}
           disabled={loading}
         >
