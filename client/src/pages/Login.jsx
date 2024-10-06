@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../components/OAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,6 +48,13 @@ const Login = () => {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
+      <Helmet>
+        <title>Login | Employee Management System</title>
+        <meta
+          name="description"
+          content="Login to Employee Management System"
+        />
+      </Helmet>
       <h1 className="text-3xl text-center font-semibold my-7">Login</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input

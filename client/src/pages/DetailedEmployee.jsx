@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Snipper from "../components/Spinner";
+import { Helmet } from "react-helmet";
 
 const DetailedEmployee = () => {
   const [employee, setEmployee] = useState({});
@@ -57,9 +58,16 @@ const DetailedEmployee = () => {
 
   return (
     <div className="p-4 text-center min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-row justify-evenly w-full">
-        <h1 className="text-2xl my-2 ml-10">Employee Details</h1>
-        <BackButton />
+      <Helmet>
+        <title>{`${employee.name}`}'s Details</title>
+        <meta
+          name="description"
+          content="Details of employee from Employee Management System"
+        />
+      </Helmet>
+        <BackButton/>
+      <div className="w-full">
+        <h1 className="text-2xl text-center">{employee.name} Details</h1>
       </div>
       {loading ? (
         <Snipper />

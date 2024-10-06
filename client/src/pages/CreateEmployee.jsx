@@ -10,6 +10,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { Helmet } from "react-helmet";
 
 const CreateEmployee = () => {
   const navigate = useNavigate();
@@ -140,6 +141,13 @@ const CreateEmployee = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>Add New Employee</title>
+        <meta
+          name="description"
+          content="Add a new employee to the employee list"
+        />
+      </Helmet>
       <BackButton />
       <h1 className="text-3xl my-4 font-semibold">Add New Employee</h1>
       {loading ? <Spinner /> : ""}

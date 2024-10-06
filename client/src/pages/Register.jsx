@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -41,6 +42,13 @@ const Register = () => {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
+      <Helmet>
+        <title>Register | Employee Management System</title>
+        <meta
+          name="description"
+          content="Register to Employee Management System"
+        />
+      </Helmet>
       <h1 className="text-3xl text-center font-semibold my-7">Registration</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input

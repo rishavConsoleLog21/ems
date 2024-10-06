@@ -10,6 +10,8 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { Helmet } from "react-helmet";
+import { data } from "autoprefixer";
 
 const UpdateEmployee = () => {
   const navigate = useNavigate();
@@ -169,9 +171,20 @@ const UpdateEmployee = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-center min-h-screen flex flex-col justify-center items-center">
+      <Helmet>
+        <title>Updating {`${name}`} | Employee Management System</title>
+        <meta
+          name="description"
+          content="Update Employee in Employee Management System"
+        />
+      </Helmet>
       <BackButton />
-      <h1 className="text-3xl my-4 font-semibold">Update Employee</h1>
+      <h1 className="text-3xl my-4 font-semibold text-center">
+        Updating
+        <span className="text-neutral-700"> {name} </span>
+        profile
+      </h1>
       {loading ? <Spinner /> : ""}
       <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
         <div className="my-4">
@@ -222,10 +235,10 @@ const UpdateEmployee = () => {
             <option value="Sales">Sales</option>
           </select>
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-slate-600">Gender🚹/🚺</label>
-          <div id="gender">
-            <label className="mr-2 text-blue-500">
+        <div className="my-4 flex items-center gap-4">
+          <label className="text-xl text-slate-600">Gender🚹/🚺</label>
+          <div id="gender" className="flex gap-4">
+            <label className="text-blue-500 flex items-center gap-1">
               <input
                 type="radio"
                 value="M"
@@ -234,7 +247,7 @@ const UpdateEmployee = () => {
               />
               M
             </label>
-            <label className="mr-2 text-pink-500">
+            <label className="text-pink-500 flex items-center gap-1">
               <input
                 type="radio"
                 value="F"
@@ -245,10 +258,10 @@ const UpdateEmployee = () => {
             </label>
           </div>
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-slate-600">Course</label>
-          <div id="course">
-            <label className="mr-2">
+        <div className="my-4 flex items-center gap-4">
+          <label className="text-xl text-slate-600">Course</label>
+          <div id="course" className="flex gap-4">
+            <label className="flex items-center gap-1">
               <input
                 type="checkbox"
                 value="MCA"
@@ -263,7 +276,7 @@ const UpdateEmployee = () => {
               />
               MCA
             </label>
-            <label className="mr-2">
+            <label className="flex items-center gap-1">
               <input
                 type="checkbox"
                 value="BCA"
@@ -278,7 +291,7 @@ const UpdateEmployee = () => {
               />
               BCA
             </label>
-            <label className="mr-2">
+            <label className="flex items-center gap-1">
               <input
                 type="checkbox"
                 value="BSC"
@@ -295,8 +308,8 @@ const UpdateEmployee = () => {
             </label>
           </div>
         </div>
-        <div className="my-4">
-          <label className="text-xl mr-4 text-slate-600">Image</label>
+        <div className="my-4 flex flex-col items-center">
+          <label className="text-xl text-slate-600">Image</label>
           <input
             id="image"
             type="file"
@@ -309,10 +322,10 @@ const UpdateEmployee = () => {
             id="preview"
             src={formData.image}
             alt="Preview"
-            className="mt-2 w-24 h-24 cursor-pointer rounded-full self-center object-cover"
+            className="mt-2 w-24 h-24 cursor-pointer rounded-full object-cover"
             onClick={() => fileInputRef.current.click()}
           />
-          <p className="text-sm self-center">
+          <p className="text-sm mt-2">
             {imageError ? (
               <span className="text-red-500">
                 Error uploading image (file size must be less than 2 MB)
@@ -329,7 +342,7 @@ const UpdateEmployee = () => {
           </p>
         </div>
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:opacity-85 mt-4"
           onClick={handleUpdateEmployee}
           disabled={loading}
         >

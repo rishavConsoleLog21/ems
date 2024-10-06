@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -7,6 +8,10 @@ const NotFound = () => {
   };
   return (
     <div className="not-found-container h-screen flex flex-col items-center justify-center bg-gray-100 text-center p-6">
+      <Helmet>
+        <title>404 | Page Not Found</title>
+        <meta name="description" content="Page Not Found" />
+      </Helmet>
       <h1 className="text-6xl font-bold text-red-500 mb-4">404</h1>
       <h2 className="text-3xl font-semibold text-gray-800 mb-2">
         Page Not Found

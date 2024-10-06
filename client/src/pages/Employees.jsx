@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineAddBox } from "react-icons/md";
 import EmployeeTable from "../components/home/EmployeeTable";
 import EmployeeCard from "../components/home/EmployeeCard";
+import { Helmet } from "react-helmet";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
@@ -73,6 +74,13 @@ const Employees = () => {
 
   return (
     <div className="min-h-screen gap-4">
+      <Helmet>
+        <title>Employees | Employee Management System</title>
+        <meta
+          name="description"
+          content="Employees of Employee Management System"
+        />
+      </Helmet>
       <div className="flex justify-center items-center gap-x-4">
         <button
           className="bg-sky-300 hover:bg-sky-500 px-4 py-1 rounded-lg"

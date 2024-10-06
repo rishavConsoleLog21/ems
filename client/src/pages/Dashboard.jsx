@@ -1,11 +1,19 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 p-6">
+      <Helmet>
+        <title>Dashboard | Employee Management System</title>
+        <meta
+          name="description"
+          content="Dashboard of Employee Management System"
+        />
+      </Helmet>
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full text-center">
         <h1 className="text-4xl font-bold text-indigo-600 mb-6">
           Welcome to Employee Management System
