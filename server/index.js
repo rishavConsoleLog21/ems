@@ -2,19 +2,21 @@ import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import path from "path";
+import helmet from "helmet";
 
 const __dirname = path.resolve();
 const app = express();
+app.use(helmet());
+
+app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "/client/dist")));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-app.get("", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/dist/index.html"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html" ));
 });
-
-app.use(express.json());
-app.use(cookieParser());
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -27,10 +29,6 @@ mongoose
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
 });
 
 //Routes
