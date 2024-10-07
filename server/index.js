@@ -38,7 +38,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/employees", employeesRoutes);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 });
 
 app.use((err, req, res, next) => {
