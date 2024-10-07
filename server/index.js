@@ -3,8 +3,11 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import path from "path";
 import helmet from "helmet";
+import { fileURLToPath } from "url";
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT;
 app.use(helmet());
@@ -15,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
