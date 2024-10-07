@@ -10,7 +10,19 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT;
+
 app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+      fontSrc: ["'self'", "https://cdn.jsdelivr.net"],
+      imgSrc: ["'self'", "data:"],
+    },
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
