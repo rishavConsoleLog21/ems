@@ -12,12 +12,8 @@ app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, "/client/dist")));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-});
+app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -40,6 +36,10 @@ import employeesRoutes from "./routes/employees.routes.js";
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/employees", employeesRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+});
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

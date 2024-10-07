@@ -16,7 +16,7 @@ const Dashboard = () => {
       </Helmet>
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full text-center">
         <h1 className="text-4xl font-bold text-indigo-600 mb-6">
-          Welcome to Employee Management System
+          Welcome to Employee Management System of DealsDray
         </h1>
         {currentUser ? (
           <div>
