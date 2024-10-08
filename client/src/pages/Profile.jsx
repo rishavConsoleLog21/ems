@@ -18,7 +18,6 @@ import {
   logoutUser,
 } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
-import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -129,14 +128,9 @@ const Profile = () => {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <Helmet>
-        <title>{currentUser.username}'s Profile</title>
-        <meta
-          name="description"
-          content="Profile of Employee Management System"
-        />
-      </Helmet>
-      <h1 className="text-3xl font-semibold text-center my-7">{currentUser.username}'s Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-7">
+        {currentUser.username}'s Profile
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="file"

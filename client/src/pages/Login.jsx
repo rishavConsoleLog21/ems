@@ -74,7 +74,6 @@ const Login = () => {
           onChange={handleChange}
         />
         <button
-          disabled={loading}
           className="bg-green-600 text-white p-2 rounded-lg uppercase hover:opacity-85 disabled:opacity-70"
         >
           {loading ? "Loading..." : "Login"}
